@@ -24,6 +24,8 @@ const startTimer = () => {
         timeLeft--;
         updateTimer();
 
+        // tem que ajeitar o problema do duplo click no botão start, que decrementa o tempo multiplicando
+
         if(timeLeft <1500 && timeLeft > 0){
             updateTimer();
         }
