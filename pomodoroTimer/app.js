@@ -4,6 +4,7 @@ const reset = document.getElementById("reset");
 const timer = document.getElementById("timer");
 
 let timeLeft = 1500; // tempo que será decrementado
+let totalTime = 1500; 
 let interval; // intervalo de alteração = 1s
 let isTimerRunning = false; // controla se o timer está rodando
 
@@ -12,9 +13,16 @@ const updateTimer = () => {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
 
+    updateCirularProgress()
     timer.innerHTML = 
     `${minutes.toString().padStart(2,"0")}:${seconds.toString().padStart(2,"0")}`;
 };
+
+function updateCirularProgress(){
+    const percentage = (timeLeft/totalTime)*100;
+    const angle = (percentage/100)*360;
+    document.documentElement.style.setProperty('--angle', `${angle}deg`);
+}
 
 // função que diminui o tempo de segundo em segundo
 const startTimer = () => {
